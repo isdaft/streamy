@@ -2,13 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { signIn, signOut } from '../actions';
 
+
 class GoogleAuth extends React.Component {
 	
 	componentDidMount(){
-			//lets try a firebase auth instead
+		
 		window.gapi.load('client:auth2', () => {
+			
 			window.gapi.client.init({
-				clientId: '801152987815-lrc2g1f2lkm37ic5osv38cke11kv7vqn.apps.googleusercontent.com',
+				clientId: process.env.REACT_APP_TEST,
 				scope: 'email'
 			}).then(() => {
 				//assign auth instance from gapi to this.auth
@@ -17,9 +19,10 @@ class GoogleAuth extends React.Component {
 				this.onAuthChange(this.auth.isSignedIn.get());
 				//sit and wait if status changes in the future
 				this.auth.isSignedIn.listen(this.onAuthChange); //passing callback onAuthChange to listener method
-
+			
 			});
 		});
+		
 	}
 	
 	onAuthChange = (isSignedIn) => {
