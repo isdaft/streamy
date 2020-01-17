@@ -5,7 +5,7 @@ import { signIn, signOut } from '../actions';
 class GoogleAuth extends React.Component {
 	
 	componentDidMount(){
-		
+			//lets try a firebase auth instead
 		window.gapi.load('client:auth2', () => {
 			window.gapi.client.init({
 				clientId: '801152987815-lrc2g1f2lkm37ic5osv38cke11kv7vqn.apps.googleusercontent.com',
