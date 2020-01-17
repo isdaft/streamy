@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "default": "streamy-reactjs",
+    "dev": "streamy-reactjs"
+  }
+}
