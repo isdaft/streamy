@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { signIn, signOut } from '../actions';
 
+
 class GoogleAuth extends React.Component {
 	
 	componentDidMount(){
 		
 		window.gapi.load('client:auth2', () => {
+			
 			window.gapi.client.init({
 				clientId: process.env.REACT_APP_TEST,
 				scope: 'email'
@@ -17,9 +19,10 @@ class GoogleAuth extends React.Component {
 				this.onAuthChange(this.auth.isSignedIn.get());
 				//sit and wait if status changes in the future
 				this.auth.isSignedIn.listen(this.onAuthChange); //passing callback onAuthChange to listener method
-
+			
 			});
 		});
+		
 	}
 	
 	onAuthChange = (isSignedIn) => {

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GoogleAuth from './GoogleAuth';
+import fauth from '../firebase'
 
 const Header = () => {
 	return (
@@ -12,7 +13,7 @@ const Header = () => {
 				<Link to="/" className="item">
 					All Streams
 				</Link>
-				<GoogleAuth />
+				<GoogleAuth/>
 			</div>
 		</div>
 	);
