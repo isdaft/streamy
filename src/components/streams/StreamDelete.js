@@ -3,9 +3,13 @@ import Modal from '../Modal';
 import history from '../../history';
 //cdm 
 class StreamDelete extends React.Component{
+	componentDidMount(props){
+		console.log(props)
+	}
+
 	renderActions(){
 
-	return(
+		return(
 			<React.Fragment>
 				<button className="ui primary button">Delete</button>
 				<button className="ui button">Cancel</button>
