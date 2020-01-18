@@ -15,6 +15,7 @@ class GoogleAuth extends React.Component {
 			}).then(() => {
 				//assign auth instance from gapi to this.auth
 				this.auth = window.gapi.auth2.getAuthInstance();
+				console.log(this.auth)
 				// immeditately update auth state inside of redux store
 				this.onAuthChange(this.auth.isSignedIn.get());
 				//sit and wait if status changes in the future

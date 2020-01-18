@@ -8,6 +8,7 @@ import {
 	DELETE_STREAM,
 	EDIT_STREAM
 } from './types';
+import history from '../history';
 import streams from '../apis/streams';
 //internal bool tag change sign in to true
 export const signIn = (userId) => {
@@ -29,6 +30,8 @@ export const createStream = formValues => async (dispatch, getState) =>{
 	const res = await streams.post('/streams', {...formValues, userId});
 
 	dispatch({ type: CREATE_STREAM, payload: res.data })
+	//get user back to root
+	history.push('/');
 }
 
 export const fetchStreams = () => async dispatch =>{
@@ -44,9 +47,10 @@ export const fetchStream = (id) => async dispatch =>{
 }
 
 export const editStream = (id, formValues) => async dispatch =>{
-	const res = await streams.put(`/streams/${id}`, formValues);
+	const res = await streams.patch(`/streams/${id}`, formValues);
 
 	dispatch({ type: EDIT_STREAM, payload: res.data});
+	history.push('/');
 }
 
 export const deleteStream = (id) => async dispatch =>{
