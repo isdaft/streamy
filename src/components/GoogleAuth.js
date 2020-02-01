@@ -34,13 +34,14 @@ class GoogleAuth extends React.Component {
 		  
 
 
-		const googleUser = this.auth.currentUser.get();
-		const googleName = googleUser.getBasicProfile().getName();
-		const googleImage = googleUser.getBasicProfile().getImageUrl();
+		
 		
 		//this.setState({ googleUser: googleUser, googleName: googleName, googleImage: googleImage});
 
 		if(isSignedIn){
+			const googleUser = this.auth.currentUser.get();
+			const googleName = googleUser.getBasicProfile().getName();
+			const googleImage = googleUser.getBasicProfile().getImageUrl();
 			this.props.signIn(googleUser.getId(), googleName, googleImage);
 		} else {
 			this.props.signOut();
