@@ -3,34 +3,52 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { fetchStreams } from '../../actions';
 
+
 //class based - action creator inside component did mount
 
 class streamList extends React.Component {
-
+	
+	
+	
 	componentDidMount() {
 		this.props.fetchStreams();
 
 	}
+	//{this.renderAdmin(stream)}
 	renderList(){
-		return this.props.streams.map(stream => {
-			return (
-				<div className="item" key={stream.id}>
-				{this.renderAdmin(stream)}
-					<i className="large middle aligned icon camera"/>
-					<div className="content">
-					<Link to={`/streams/${stream.id}`} className="header">{stream.title}</Link>
-					</div>
-					<div className="description">
-					{stream.description}
-					</div>
-					
+		
 
-				</div>
-			);
-		})
+			return(this.props.streams.map(stream => {
+				if(!stream.item){
+					return null;
+				} else {
+
+					return (
+					<div className="item" key={stream.id}>
+						{this.renderAdmin(stream)}
+						<i className="large middle aligned icon desktop"/>
+						<div className="content">
+						<Link to={`/streams/${stream.id}`} className="header">{stream.item.title}</Link>
+						<div className="description">
+						{stream.item.description}
+						</div>
+						</div>
+						
+						
+
+					</div>
+				);
+
+				}
+				
+			}));
+
+		
+		
 	}
 	renderAdmin(stream){ //edit and delete personal stream
-		if(stream.userId === this.props.currentUserId){
+		
+		if(stream.item.googleUser === this.props.currentUserId){
 			return(
 				<div className="right floated content">
 					
@@ -40,6 +58,8 @@ class streamList extends React.Component {
 				</div>
 			)
 		}
+		
+		
 	}
 	renderCreate(stream){ //show create button if logged in
 		if(this.props.isSignedIn){
@@ -52,8 +72,10 @@ class streamList extends React.Component {
 
 	}
 	render() {
-		console.log(this.props.streams);
+		
+
 		return(
+			//console.log('render', this.props);
 			<div>
 				<h2>Streams</h2>
 				<div className="ui celled list">
@@ -62,14 +84,17 @@ class streamList extends React.Component {
 				{this.renderCreate()}
 			</div>
 		);
+		
 	}
 
 }
-const mapStateToProps = (state)=> {
+const mapStateToProps = (state, ownProps)=> {
+	//console.log('mapstatetoprops state: ', state);
 	//Object.values() = turn objects into an array
+	
 	return { 
 		streams: Object.values(state.streams),
-		currentUserId: state.auth.userId,
+		currentUserId: state.auth.googleUser,
 		isSignedIn: state.auth.isSignedIn
 	}
 }

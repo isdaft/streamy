@@ -12,6 +12,7 @@ class StreamDelete extends React.Component{
 
 	renderActions(){
 		//ES15 destructure id out of params
+
 		const { id } = this.props.match.params;
 		//onclick arrow function to only run when clicked
 		return(
@@ -26,7 +27,7 @@ class StreamDelete extends React.Component{
 		if(!this.props.stream){
 			return 'Are you sure you want to delete this stream: ?';
 		}
-		return `Are you sure you want to delete the stream: ${this.props.stream.title} ?`;
+		return `Are you sure you want to delete the stream: ${this.props.stream.item.title} ?`;
 	}
 
 	render(){

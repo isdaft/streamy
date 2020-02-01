@@ -5,3 +5,5 @@ export const FETCH_STREAMS = 'FETCH_STREAMS';
 export const FETCH_STREAM = 'FETCH_STREAM';
 export const DELETE_STREAM = 'DELETE_STREAM';
 export const EDIT_STREAM = 'EDIT_STREAM';
+export const FETCH_FB_STREAMS = 'FETCH_FB_STREAMS';
+export const FETCH_FB_STREAM = 'FETCH_FB_STREAM';

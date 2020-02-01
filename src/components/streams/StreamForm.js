@@ -3,6 +3,9 @@ import {Field, reduxForm} from 'redux-form';
 
 
 class StreamForm extends React.Component {
+	
+
+	
 	renderError({error, touched}){
 
 		if(touched && error){
@@ -33,6 +36,7 @@ class StreamForm extends React.Component {
 	//helper method
 	onSubmit = (formValues) => { //onSubmit sends to redux-form handleSubmit the values of the fields
 		this.props.onSubmit(formValues);
+
 	
 	}
 	render() {

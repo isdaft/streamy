@@ -4,7 +4,7 @@ import { createStream } from '../../actions';
 import StreamForm from './StreamForm';
 
 class StreamCreate extends React.Component {
-	
+
 
 	
 	//helper method
