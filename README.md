@@ -4,7 +4,7 @@
 
 work in progress - pushed to firebase after each github push
 
-https://streamy-reactjs.firebaseapp.com
+[Link to Live!](https://streamy-reactjs.firebaseapp.com)
 
 ## update 02/01/20
 ### anyone can login with google and create a stream
